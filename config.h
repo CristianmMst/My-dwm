@@ -18,10 +18,10 @@ static const int showsystray = 1;
 static const int showbar = 1;
 // 0 means bottom bar 
 static const int topbar = 1;
-
+// style=Regular
 // ---------------------------------- Fonts ------------------------------------
 
-static const char *fonts[] = { "UbuntuMono Nerd Font:size=14:weight=bold:antialias=true:autohint:true" };
+static const char *fonts[] = { "UbuntuMono Nerd Font:style=Regular:size=12:antialias=true:autohint:true", "SymbolsNerdFont:size=13:antialias=true:autohint=true" };
 static const char dmenufont[] = "UbuntuMono Nerd Font:size=12:antialias=true:autohint=true";
 
 // ---------------------------------- Colors -----------------------------------
@@ -34,7 +34,7 @@ struct Theme {
 };
 
 static const struct Theme material = {
-    .inactive = "#4c566a",
+    .inactive = "#DADADA",
     .active = "#ffffff",
     .bg = "#0f101a",
     .focus = "#a151d3"
@@ -53,11 +53,11 @@ static const struct Theme nord = {
     .bg = "#2e3440",
     .focus = "#81a1c1"
 };
-
+//#2d2a2e
 static const struct Theme monokai_pro = {
-    .inactive = "#727072",
-    .active = "#2d2a2e",
-    .bg = "#2d2a2e",
+    .inactive = "#FFFFFF",
+    .active = "#FFFFFF",
+    .bg = "#1e2127",
     .focus = "#a9dc76"
 }; 
 
@@ -80,7 +80,7 @@ static const char *colors[][3] = {
 
 // -------------------------------- Workspaces ---------------------------------
 
-static const char *tags[] = { " ", " ", " ", " ", " ", "  ", " ", " ", " " };
+static const char *tags[] = { "", "", "", "", "", "" };
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -216,7 +216,7 @@ static Key keys[] = {
     { MODKEY, XK_e, spawn, SHCMD("pcmanfm") },
 
     // Browser
-    { MODKEY, XK_b, spawn, SHCMD("firefox") },
+    { MODKEY, XK_b, spawn, SHCMD("brave-browser") },
 
     // Redshift
     { MODKEY, XK_r, spawn, SHCMD("redshift -O 2400") },
@@ -224,14 +224,14 @@ static Key keys[] = {
 
     // Screenshot
     { MODKEY, XK_s, spawn, SHCMD("scrot") },
-    { MODKEY|ShiftMask, XK_s, spawn, SHCMD("scrot -s") },
+    { MODKEY|ShiftMask, XK_s, spawn, SHCMD("scrot -s /home/cristian/Imágenes/screen.png") },
 
     // ----------------- Hardware ------------------
 
     // Volume
-    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%")},
-    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
-    {0, XF86XK_AudioMute, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
+    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("amixer sset Master 5%-")},
+    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer sset Master 10%+")},
+    {0, XF86XK_AudioMute, spawn, SHCMD("amixer sset Master toggle")},
 
     // Brightness
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
