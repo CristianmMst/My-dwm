@@ -21,7 +21,7 @@ static const int topbar = 1;
 // style=Regular
 // ---------------------------------- Fonts ------------------------------------
 
-static const char *fonts[] = { "UbuntuMono Nerd Font:style=Regular:size=12:antialias=true:autohint:true", "SymbolsNerdFont:size=13:antialias=true:autohint=true" };
+static const char *fonts[] = { "UbuntuMono Nerd Font:style=Regular:size=11:antialias=true:autohint:true", "SymbolsNerdFont:size=13:antialias=true:autohint=true" };
 static const char dmenufont[] = "UbuntuMono Nerd Font:size=12:antialias=true:autohint=true";
 
 // ---------------------------------- Colors -----------------------------------
@@ -34,17 +34,17 @@ struct Theme {
 };
 
 static const struct Theme material = {
-    .inactive = "#DADADA",
+    .inactive = "#BEBEBE",
     .active = "#ffffff",
-    .bg = "#0f101a",
+    .bg = "#272936",
     .focus = "#a151d3"
 };
 
 static const struct Theme onedark = {
-    .inactive = "#4c566a",
+    .inactive = "#BEBEBE",
     .active = "#ffffff",
     .bg = "#1e2127",
-    .focus = "#E06C75"
+    .focus = "#F7B232"
 };
 
 static const struct Theme nord = {
@@ -229,9 +229,9 @@ static Key keys[] = {
     // ----------------- Hardware ------------------
 
     // Volume
-    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("amixer sset Master 5%-")},
-    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("amixer sset Master 10%+")},
-    {0, XF86XK_AudioMute, spawn, SHCMD("amixer sset Master toggle")},
+    {0, XF86XK_AudioLowerVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5%")},
+    {0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5%")},
+    {0, XF86XK_AudioMute, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle")},
 
     // Brightness
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
